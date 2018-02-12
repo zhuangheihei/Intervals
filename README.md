@@ -1,18 +1,12 @@
+Usage:
+- Type "make" in bash to compile .java files.
+- Type "java Main file.csv file.txt" to run this program.
+- Type "make clean" to remove all .class files.
+---
+- Interval.java: define the interval class
+- Solution.java: define the solution class, which has two methods: 
+    - public List<Interval> addInterval(List<Interval> intervals, Interval interval)
+    - public List<Interval> removeInterval(List<Interval> intervals, Interval interval)
+- Main.java: main method to execute the code.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
-
-
-Hi there! Welcome to Cloud9 IDE!
-
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
-
-Happy coding!
-The Cloud9 IDE team
+Hong Zhuang
