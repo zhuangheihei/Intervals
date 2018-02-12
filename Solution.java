@@ -15,15 +15,16 @@ public class Solution {
         //merge and add intervals into res
         for(int i = 1; i < n; i++){
             Interval in = intervals.get(i);
-            if(in.start > e){
+            
+            if(in.start > e){ // if current interval's start is larger than the new end, add this interval
                 res.add(new Interval(s, e));
                 s = in.start;
                 e = in.end;
             } else {
-                e = Math.max(e, in.end);
+                e = Math.max(e, in.end); //track the end
             }
         }
-        res.add(new Interval(s, e));
+        res.add(new Interval(s, e));//add the last interval
         return res;
     }
 
@@ -37,18 +38,30 @@ public class Solution {
 
         for(int i = 0; i < n; i++){
             Interval in = intervals.get(i);
-            if(in.start < rms && in.end > rme){
-                res.add(new Interval(in.start, rms));
-                res.add(new Interval(rme, in.end));
-            } else if(rms < in.start && rme > in.start && rme < in.end) {
-                res.add(new Interval(rme, in.end));//删了前半部分
-            } else if(rms >= in.start && rms < in.end && in.end < rme) {
-                res.add(new Interval(in.start, rms));//删了后半部分
-            } else if(rms <= in.start && rme >= in.end){
-                continue; //全删了
-            } else {
-                res.add(new Interval(in.start, in.end));//没删这个interval
+            
+            if(rme <= in.start || rms >= in.end || rms == rme){
+                // res.add(new Interval(in.start, rms));
+                // res.add(new Interval(rme, in.end));
+                res.add(new Interval(in.start, in.end));//no removing
+            } 
+            else if(rms <= in.start && rme > in.start && rme < in.end) {
+                res.add(new Interval(rme, in.end));//remove the front part of interval
             }
+            else if(rms > in.start && rms < in.end && in.end <= rme) {
+                res.add(new Interval(in.start, rms));//remove the rear part of interval
+            } 
+            else if(in.start < rms && in.end > rme){
+                // continue; 
+                res.add(new Interval(in.start, rms));//interval is split apart
+                res.add(new Interval(rme, in.end));
+            } 
+            else {
+                // res.add(new Interval(in.start, in.end));
+                continue; //remove the entire interval
+            }
+            
+            
+            
         }
         return res;
     }
